@@ -6,6 +6,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { CarList } from './car-list/car-list';
 import { CarForm } from './car-form/car-form';
+import { Login } from './login/login';
 
 
 // 1. Definiáld az útvonalakat
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', component: CarList },           // Főoldal: Lista megjelenítése
   { path: 'add', component: CarForm },         // Új hozzáadása
   { path: 'edit/:id', component: CarForm },    // Szerkesztés (UPDATE) 
+  { path: 'login', component: Login }, // Bejelentkezés
   { path: '**', redirectTo: '' }                      // Minden más: Főoldalra irányítás
 ];
 

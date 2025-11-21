@@ -1,3 +1,13 @@
+<div *ngIf="user$ | async as user">
+  <p>Bejelentkezve mint: {{ user.email }}</p>
+  <button (click)="logout()">Kijelentkezés</button>
+</div>
+<div *ngIf="!(user$ | async)">
+  <a [routerLink]="['/login']">
+    <button>Bejelentkezés</button>
+  </a>
+</div>
+
 <h2>🚗 Autó Adatbázis (Listázás)</h2>
 
 <a [routerLink]="['/add']">
