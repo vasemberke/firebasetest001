@@ -1,14 +1,22 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, Component, signal } from '@angular/core';
+import { provideRouter, RouterOutlet, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 // Firebase importok
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { CarList } from './car-list/car-list';
+import { CarForm } from './car-form/car-form';
 
+
+// 1. Definiáld az útvonalakat
+const routes: Routes = [
+  { path: '', component: CarList },           // Főoldal: Lista megjelenítése
+  { path: 'add', component: CarForm },         // Új hozzáadása
+  { path: 'edit/:id', component: CarForm },    // Szerkesztés (UPDATE) 
+  { path: '**', redirectTo: '' }                      // Minden más: Főoldalra irányítás
+];
 
 // Firebase konfigurációs objektum
 const firebaseConfig = {
