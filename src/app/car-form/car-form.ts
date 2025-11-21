@@ -66,29 +66,7 @@ export class CarForm implements OnInit{
         }
       });
   }
-
-  /*
-  // CREATE funkció (Létrehozás)
-  onSubmit(): void {
-    if (this.carForm.valid) {
-      // Az űrlap adatainak lekérése
-      const newCarData: Omit<Car, 'id'> = this.carForm.value;
-
-      this.carService.addCar(newCarData)
-        .then(() => {
-          alert('Sikeresen hozzáadva az adatbázishoz!');
-          this.carForm.reset(); // Az űrlap ürítése
-          this.router.navigate(['/']); // Visszanavigálás a főoldalra (listához)
-        })
-        .catch(error => {
-          console.error('Hiba az adatfelvitelkor:', error);
-          alert('Hiba történt az adatok feltöltésekor!');
-        });
-    } else {
-      alert('Kérlek, töltsd ki helyesen az összes mezőt!');
-    }
-  }*/
-
+  
     // CREATE és UPDATE funkció (Létrehozás és Módosítás)
   onSubmit(): void {
     if (this.carForm.valid) {

@@ -1,11 +1,9 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, Component, signal } from '@angular/core';
 import { provideRouter, RouterOutlet, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
 // Firebase importok
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getStorage, provideStorage } from '@angular/fire/storage';
 import { CarList } from './car-list/car-list';
 import { CarForm } from './car-form/car-form';
 
