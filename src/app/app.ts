@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { CarList } from './car-list/car-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, CommonModule, CarList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

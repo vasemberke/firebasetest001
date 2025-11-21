@@ -1,0 +1,49 @@
+<h2>Új autó hozzáadása</h2>
+
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="make">Márka (Pl.: Suzuki)</label>
+    <input id="make" type="text" formControlName="make">
+    <div *ngIf="carForm.get('make')?.invalid && carForm.get('make')?.touched" class="error-message">
+      A márkát kötelező megadni.
+    </div>
+  </div>
+
+  <div>
+    <label for="model">Típus (Pl.: Swift)</label>
+    <input id="model" type="text" formControlName="model">
+    <div *ngIf="carForm.get('model')?.invalid && carForm.get('model')?.touched" class="error-message">
+      A típust kötelező megadni.
+    </div>
+  </div>
+
+  <div>
+    <label for="licensePlate">Rendszám (Pl.: ABC-123)</label>
+    <input id="licensePlate" type="text" formControlName="licensePlate" maxlength="7">
+    <div *ngIf="carForm.get('licensePlate')?.hasError('required') && carForm.get('licensePlate')?.touched" class="error-message">
+      A rendszámot kötelező megadni.
+    </div>
+    <div *ngIf="carForm.get('licensePlate')?.hasError('pattern') && carForm.get('licensePlate')?.touched" class="error-message">
+      A rendszám formátuma helytelen (Pl.: ABC-123).
+    </div>
+  </div>
+
+  <div>
+    <label for="year">Gyártási év</label>
+    <input id="year" type="number" formControlName="year">
+    <div *ngIf="carForm.get('year')?.invalid && carForm.get('year')?.touched" class="error-message">
+      Érvényes évet (1900+) kötelező megadni.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="carForm.invalid">Mentés</button>
+</form>
+
+<style>
+  .error-message {
+    color: red;
+    font-size: 0.8em;
+  }
+  /* Bővítsd ezt a CSS fájlban (car-form.component.css) a jobb kinézet érdekében */
+</style>

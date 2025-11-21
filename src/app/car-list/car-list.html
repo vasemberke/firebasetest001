@@ -1,0 +1,44 @@
+<h2>🚗 Autó Adatbázis (Listázás)</h2>
+
+<a [routerLink]="['/add']">
+  <button>+ Új autó hozzáadása</button>
+</a>
+<hr>
+
+<div *ngIf="cars$ | async as cars; else loading">
+  
+  <div *ngIf="cars.length > 0; else noCars">
+    <table>
+      <thead>
+        <tr>
+          <th>Márka</th>
+          <th>Típus</th>
+          <th>Rendszám</th>
+          <th>Év</th>
+          <th>Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars">
+          <td>{{ car.make }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.licensePlate }}</td>
+          <td>{{ car.year }}</td>
+          <td>
+            <button (click)="editCar(car)">Szerkesztés</button>
+            <button (click)="deleteCar(car.id)">Törlés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noCars>
+    <p>Nincs még autó az adatbázisban. Kérjük, használja a fenti gombot az első autó hozzáadásához!</p>
+  </ng-template>
+</div>
+
+
+<ng-template #loading>
+  <p>Adatok betöltése a Firestore-ból...</p>
+</ng-template>
